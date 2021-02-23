@@ -1,0 +1,11 @@
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!-- This is hardcoded url we need to ask django to find the url for the detail view using urls.py otherwise we get error 404 path not found-->
+        <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
